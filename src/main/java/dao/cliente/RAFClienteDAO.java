@@ -50,10 +50,10 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
     public boolean inserir(Object obj) {
         if (obj != null) {
             Cliente cliente = (Cliente) obj;
-            if (procurarCodigo(cliente.getClienteId() + "") == -1) {
+            if (procurarCodigo(cliente.getCliente_id() + "") == -1) {
                 try {
                     RAFRegistroCliente registro = new RAFRegistroCliente();
-                    registro.setClienteId(Integer.parseInt(cliente.getClienteId()));
+                    registro.setClienteId(Integer.parseInt(cliente.getCliente_id()));
                     registro.setNome(cliente.getNome());
                     registro.setCpf(cliente.getCpf());
                     arquivo.seek(arquivo.length());
@@ -77,7 +77,7 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
             while (arquivo.getFilePointer() < arquivo.length()) {
                 registro.leitura(arquivo);
                 Cliente cli = new Cliente();
-                cli.setClienteId(registro.getClienteId());
+                cli.setCliente_id(registro.getCliente_id());
                 cli.setNome(registro.getNome());
                 cli.setCpf(registro.getCpf());
                 lista.add(cli);
@@ -96,7 +96,7 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
             Cliente cliente = (Cliente) obj;
             List<Cliente> lista = new LinkedList<>();
             //Filtro para clienteId            
-            if (!"".equals(cliente.getClienteId())) {
+            if (!"".equals(cliente.getCliente_id())) {
                 lista = aplicarFiltroId(cliente);
             }
             //Filtro para nome            
@@ -115,7 +115,7 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
     
     public Cliente gerarRegistro(RAFRegistroCliente registro) {
         Cliente cliente = new Cliente();
-        cliente.setClienteId(registro.getClienteId());
+        cliente.setCliente_id(registro.getCliente_id());
         cliente.setNome(registro.getNome());
         cliente.setCpf(registro.getCpf());        
         return cliente;
@@ -129,7 +129,7 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
             RAFRegistroCliente registro = new RAFRegistroCliente();
             while (arquivo.getFilePointer() < arquivo.length()) { //Avança enquanto tiver objetos
                 registro.leitura(arquivo);
-                if (registro.getClienteId().equalsIgnoreCase(cliente.getClienteId())) {                    
+                if (registro.getCliente_id().equalsIgnoreCase(cliente.getCliente_id())) {                    
                     lista.add(gerarRegistro(registro));
                 }
             }
@@ -185,14 +185,14 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
     public int alterar(Object obj) {
         if (obj != null) {
             Cliente cliente = (Cliente) obj;
-            String chave = cliente.getClienteId() + "";
+            String chave = cliente.getCliente_id() + "";
             long pos = -1;
             RAFRegistroCliente registro = new RAFRegistroCliente();
             try {
                 pos = procurarCodigo(chave);
                 if (pos != -1) {
                     arquivo.seek(pos * registro.getTamanho());
-                    registro.setClienteId(cliente.getClienteId());
+                    registro.setCliente_id(cliente.getCliente_id());
                     registro.setNome(cliente.getNome());
                     registro.setCpf(cliente.getCpf());
                     registro.escrita(arquivo);
@@ -215,7 +215,7 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
             arquivo.seek(0);
             while (arquivo.getFilePointer() < arquivo.length()) {
                 registro.leitura(arquivo);
-                if (registro.getClienteId().equalsIgnoreCase(cod)) {
+                if (registro.getCliente_id().equalsIgnoreCase(cod)) {
                     pos = cont;
                 }
                 cont = cont + 1;
@@ -232,7 +232,7 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
     public int excluir(Object obj) {
         if (obj != null) {
             Cliente cliente = (Cliente) obj;
-            String chave = cliente.getClienteId() + "";
+            String chave = cliente.getCliente_id() + "";
             long pos = -1;
             RAFRegistroCliente registro = new RAFRegistroCliente();
             try {

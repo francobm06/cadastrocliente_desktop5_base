@@ -27,9 +27,9 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
     public boolean inserir(Object obj) {
         if (obj != null) {
             Cliente cliente = (Cliente) obj;
-            boolean tem = mapa.containsKey(cliente.getClienteId());
+            boolean tem = mapa.containsKey(cliente.getCliente_id());
             if (!tem) {
-                mapa.put(cliente.getClienteId(), cliente);
+                mapa.put(cliente.getCliente_id(), cliente);
                 return true;
             } else {
                 LOGGER.log(Level.SEVERE, "Problema em inserir o registro!");                
@@ -42,9 +42,9 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
     public int alterar(Object obj) {
         if (obj != null) {
             Cliente cliente = (Cliente) obj;
-            boolean tem = mapa.containsKey(cliente.getClienteId());
+            boolean tem = mapa.containsKey(cliente.getCliente_id());
             if (tem) {
-                Cliente c = mapa.get(cliente.getClienteId());
+                Cliente c = mapa.get(cliente.getCliente_id());
                 c.setNome(cliente.getNome());
                 c.setCpf(cliente.getCpf());
                 return 1;
@@ -59,9 +59,9 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
     public int excluir(Object obj) {
         if (obj != null) {
             Cliente cliente = (Cliente) obj;
-            boolean tem = mapa.containsKey(cliente.getClienteId());
+            boolean tem = mapa.containsKey(cliente.getCliente_id());
             if (tem) {
-                mapa.remove(cliente.getClienteId());
+                mapa.remove(cliente.getCliente_id());
                 return 1;
             } else {
                 LOGGER.log(Level.SEVERE, "Problema em excluir o registro!");
@@ -92,12 +92,12 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
                 Cliente c = it.next();
 
                 //Filtro para clienteId
-                if (c.getClienteId().equalsIgnoreCase(cliente.getClienteId()))  {
+                if (c.getCliente_id().equalsIgnoreCase(cliente.getCliente_id()))  {
                         lista.add(c);                    
                 }
 
                 //Filtro para nome
-                if (c.getClienteId().equalsIgnoreCase(cliente.getClienteId())) {
+                if (c.getCliente_id().equalsIgnoreCase(cliente.getCliente_id())) {
                      lista.add(c);                    
                 }
 

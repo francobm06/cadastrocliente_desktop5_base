@@ -21,13 +21,13 @@ public class RAFRegistroCliente extends Cliente {
     }
 
     public void escrita(RandomAccessFile arquivo) throws IOException {
-        arquivo.writeInt(Integer.parseInt(getClienteId()));
+        arquivo.writeInt(Integer.parseInt(getCliente_id()));
         escreveString(arquivo, getNome(), 100);
         escreveString(arquivo, getCpf(), 11);
     }
 
     public void leitura(RandomAccessFile arquivo) throws IOException {
-        setClienteId(arquivo.readInt() + "");
+        setCliente_id(arquivo.readInt() + "");
         setNome(lerString(arquivo, 100).trim());
         setCpf(lerString(arquivo, 11).trim());
     }

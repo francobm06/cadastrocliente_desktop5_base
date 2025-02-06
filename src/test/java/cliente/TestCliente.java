@@ -18,14 +18,14 @@ class TestCliente {
     @Test
     void testCliente() {
         Cliente instancia = new Cliente();
-        assertTrue("".equals(instancia.getClienteId()) && "".equals(instancia.getNome()) && "".equals(instancia.getCpf()));
+        assertTrue("".equals(instancia.getCliente_id()) && "".equals(instancia.getNome()) && "".equals(instancia.getCpf()));
     }
 
     @Test
     void testClienteIdInt() {
         Cliente instancia = new Cliente();
         instancia.setClienteId(1);
-        assertTrue("1".equals(instancia.getClienteId()) && "".equals(instancia.getNome()) && "".equals(instancia.getCpf()));
+        assertTrue("1".equals(instancia.getCliente_id()) && "".equals(instancia.getNome()) && "".equals(instancia.getCpf()));
     }
 
     @Test

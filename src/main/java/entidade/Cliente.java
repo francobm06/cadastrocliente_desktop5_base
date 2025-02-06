@@ -16,7 +16,7 @@ public class Cliente {
     /**
      * Serve para identificar um cliente.
      */
-    private String clienteId;
+    private String cliente_id;
     /**
      * Nome do Cliente.
      */
@@ -40,7 +40,7 @@ public class Cliente {
      * @param nome
      */
     public Cliente(String clienteId, String nome, String cpf) {
-        setClienteId(clienteId);
+        setCliente_id(clienteId);
         setNome(nome);
         setCpf(cpf);
     }
@@ -50,21 +50,21 @@ public class Cliente {
      *
      * @return Uma string com o Id
      */
-    public String getClienteId() {
-        return clienteId;
+    public String getCliente_id() {
+        return cliente_id;
     }
 
     /**
      * Modifica o id de um cliente.
      *
-     * @param clienteId Um literal com o id de um cliente.
+     * @param cliente_id Um literal com o id de um cliente.
      */
-    public void setClienteId(String clienteId) {
-        this.clienteId = clienteId;
+    public void setCliente_id(String cliente_id) {
+        this.cliente_id = cliente_id;
     }
 
     public void setClienteId(int clienteId) {
-        setClienteId(clienteId + "");
+        setCliente_id(clienteId + "");
     }
 
     /**
@@ -108,7 +108,7 @@ public class Cliente {
      */
     @Override
     public String toString() {
-        return ("clienteId:" + getClienteId() + " - Nome :" + getNome() + " - CPF :" + getCpf());
+        return ("clienteId:" + getCliente_id() + " - Nome :" + getNome() + " - CPF :" + getCpf());
     }
 
     /**

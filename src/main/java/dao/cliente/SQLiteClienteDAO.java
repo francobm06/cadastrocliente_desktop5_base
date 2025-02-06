@@ -63,7 +63,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 Cliente cliente = new Cliente();
-                cliente.setClienteId(rs.getString("CLIENTEID"));
+                cliente.setCliente_id(rs.getString("CLIENTEID"));
                 cliente.setNome(rs.getString("NOME"));
                 cliente.setCpf(rs.getString("CPF"));
                 lista.add(cliente);
@@ -94,7 +94,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
                 sql.append("insert into " + TABLE + "(");
                 sql.append(METADADOSINSERT + " ) ");
 
-                sql.append("values ('" + preparaSQL(cliente.getClienteId()));
+                sql.append("values ('" + preparaSQL(cliente.getCliente_id()));
                 sql.append("','" + preparaSQL(cliente.getNome()));
                 sql.append("','" + preparaSQL(cliente.getCpf()) + "')");
 
@@ -129,7 +129,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
                 sql.append("update " + TABLE);
                 sql.append(" set NOME='" + cliente.getNome() + "',");
                 sql.append(" CPF='" + cliente.getCpf() + "'");
-                sql.append(" where " + TABLE + "." + PK[0] + "='" + preparaSQL(cliente.getClienteId()) + "'");
+                sql.append(" where " + TABLE + "." + PK[0] + "='" + preparaSQL(cliente.getCliente_id()) + "'");
 
                 con = getConnection();
                 stmt = con.createStatement();
@@ -159,7 +159,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             StringBuilder sql = new StringBuilder();
             int res = 0;
             try {
-                sql.append("delete from " + TABLE + " where " + TABLE + "." + PK[0] + " = '" + preparaSQL(cliente.getClienteId()) + "'");
+                sql.append("delete from " + TABLE + " where " + TABLE + "." + PK[0] + " = '" + preparaSQL(cliente.getCliente_id()) + "'");
                 con = getConnection();
                 stmt = con.createStatement();
                 res = stmt.executeUpdate(sql.toString());
@@ -194,8 +194,8 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
 
             List<String> filtros = new ArrayList();
 
-            if (cliente.getClienteId() != null && !"".equals(cliente.getClienteId())) {
-                filtros.add(TABLE + "." + PK[0] + "='" + preparaSQL(cliente.getClienteId()) + "'");
+            if (cliente.getCliente_id() != null && !"".equals(cliente.getCliente_id())) {
+                filtros.add(TABLE + "." + PK[0] + "='" + preparaSQL(cliente.getCliente_id()) + "'");
             }
 
             if (cliente.getNome() != null && !"".equals(cliente.getNome())) {

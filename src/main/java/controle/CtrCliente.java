@@ -80,7 +80,7 @@ public class CtrCliente {
      */
     public void jBIncluir_actionPerformed(ActionEvent e) {
         Cliente cliente = new Cliente();
-        cliente.setClienteId(getFrmCliente().jTClienteId.getText());
+        cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         cliente.setNome(getFrmCliente().jTNome.getText());
         cliente.setCpf(getFrmCliente().jTCpf.getText());
         Valida valida = new Valida();
@@ -104,7 +104,7 @@ public class CtrCliente {
      */
     public void jBAlterar_actionPerformed(ActionEvent e) {
         Cliente cliente = new Cliente();
-        cliente.setClienteId(getFrmCliente().jTClienteId.getText());
+        cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         cliente.setNome(getFrmCliente().jTNome.getText());
         cliente.setCpf(getFrmCliente().jTCpf.getText());
         Valida valida = new Valida();
@@ -128,7 +128,7 @@ public class CtrCliente {
      */
     public void jBConsultar_actionPerformed(ActionEvent e) {
         Cliente cliente = new Cliente();
-        cliente.setClienteId(getFrmCliente().jTClienteId.getText());
+        cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         boolean resultado = cliente.abrir();
         if (resultado == true) {
             getFrmCliente().jTNome.setText(cliente.getNome());
@@ -146,7 +146,7 @@ public class CtrCliente {
      */
     public void jBExcluir_actionPerformed(ActionEvent e) {
         Cliente cliente = new Cliente();
-        cliente.setClienteId(getFrmCliente().jTClienteId.getText());
+        cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         int resultado = cliente.excluir();
         if (resultado != 0) {
             getFrmCliente().mostrarMensagem("Exclusão realizada com sucesso!");
