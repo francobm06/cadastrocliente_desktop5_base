@@ -24,7 +24,7 @@ class TestCliente {
     @Test
     void testClienteIdInt() {
         Cliente instancia = new Cliente();
-        instancia.setClienteId(1);
+        instancia.setCliente_Id(1);
         assertTrue("1".equals(instancia.getCliente_id()) && "".equals(instancia.getNome()) && "".equals(instancia.getCpf()));
     }
 

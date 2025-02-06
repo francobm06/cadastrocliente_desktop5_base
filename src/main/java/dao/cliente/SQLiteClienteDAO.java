@@ -61,7 +61,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             con = getConnection();
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
-            while (rs.next()) {
+            while (rs.next() == true) {
                 Cliente cliente = new Cliente();
                 cliente.setCliente_id(rs.getString("CLIENTEID"));
                 cliente.setNome(rs.getString("NOME"));

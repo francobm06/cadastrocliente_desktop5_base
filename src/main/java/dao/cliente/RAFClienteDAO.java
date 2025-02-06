@@ -53,7 +53,7 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
             if (procurarCodigo(cliente.getCliente_id() + "") == -1) {
                 try {
                     RAFRegistroCliente registro = new RAFRegistroCliente();
-                    registro.setClienteId(Integer.parseInt(cliente.getCliente_id()));
+                    registro.setCliente_Id(Integer.parseInt(cliente.getCliente_id()));
                     registro.setNome(cliente.getNome());
                     registro.setCpf(cliente.getCpf());
                     arquivo.seek(arquivo.length());
@@ -239,7 +239,7 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
                 pos = procurarCodigo(chave);
                 if (pos != -1) {
                     arquivo.seek(pos * registro.getTamanho());
-                    registro.setClienteId(-1);
+                    registro.setCliente_Id(-1);
                     registro.setNome("");
                     registro.setCpf("");
                     registro.escrita(arquivo);

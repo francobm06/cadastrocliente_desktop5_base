@@ -63,8 +63,8 @@ public class Cliente {
         this.cliente_id = cliente_id;
     }
 
-    public void setClienteId(int clienteId) {
-        setCliente_id(clienteId + "");
+    public void setCliente_Id(int cliente_id) {
+        setCliente_id(cliente_id + "");
     }
 
     /**
@@ -169,7 +169,7 @@ public class Cliente {
         DAOFactory factory = DAOFactory.getDAOFactory(Factory.FABRICA);
         ClienteDAO clientedao = factory.getClienteDAO();
         List lista = clientedao.aplicarFiltro(this);
-        if (!lista.isEmpty()) {
+        if (lista.isEmpty() == false) {
             Cliente oCliente = (Cliente) lista.iterator().next();
             setNome(oCliente.getNome());
             setCpf(oCliente.getCpf());
