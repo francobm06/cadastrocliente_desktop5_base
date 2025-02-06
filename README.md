@@ -13,7 +13,7 @@
  - Utiliza o padrão abstract factory para abstrair 3 formas de armazenamento:
 	- 1 - Banco de Dados(SQLLite)
 	- 2 - HashMap	
-        - 3 - Arquivo Binário
+	- 3 - Arquivo Binário
  - Toda iteração com banco de dados é tratada diretamente pelo DAO(Data Access Object).<br>
  - A aplicação esta configurada para utilizar inicialmente memória principal(Hashmap) para armazenamento.
  - Se desejar utilizar outra fonte de dados, edite o arquivo src\dao\Factory.java alterando a FABRICA para outro valor.
