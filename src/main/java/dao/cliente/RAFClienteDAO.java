@@ -7,8 +7,6 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Collections;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import dao.RAFDAOFactory;
 import entidade.Cliente;
@@ -21,8 +19,6 @@ import entidade.Cliente;
  */
 public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
 
-    private static final Logger LOGGER = Logger.getLogger(RAFClienteDAO.class.getName());
-
     private RandomAccessFile arquivo;
 
     public RAFClienteDAO() {
@@ -34,7 +30,7 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
             File nomeArquivo = new File("cliente.dat");
             arquivo = new RandomAccessFile(nomeArquivo, "rw");
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Problema em abrir o arquivo!{0}", e);
+            System.out.println("Problema em abrir o arquivo!" + e);
         }
     }
 
@@ -42,7 +38,7 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
         try {
             arquivo.close();
         } catch (IOException e) {
-            LOGGER.log(Level.SEVERE, "Problema em fechar o arquivo!{0}", e);
+            System.out.println("Problema em fechar o arquivo!" + e);
         }
     }
 
@@ -53,14 +49,14 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
             if (procurarCodigo(cliente.getCliente_id() + "") == -1) {
                 try {
                     RAFRegistroCliente registro = new RAFRegistroCliente();
-                    registro.setCliente_Id(Integer.parseInt(cliente.getCliente_id()));
+                    registro.setCliente_id(cliente.getCliente_id());
                     registro.setNome(cliente.getNome());
                     registro.setCpf(cliente.getCpf());
                     arquivo.seek(arquivo.length());
                     registro.escrita(arquivo);
                     return true;
                 } catch (IOException e) {
-                    LOGGER.log(Level.SEVERE, "Problema em inserir o registro!{0}", e);
+                   System.out.println("Problema em inserir o registro!" + e);
                 }
             }
         }
@@ -83,9 +79,9 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
                 lista.add(cli);
             }
         } catch (EOFException eof) {
-            LOGGER.log(Level.SEVERE, "Problema no fim do arquivo em geLista:{0}", eof);
+            System.out.println("Problema no fim do arquivo em geLista:" + eof);
         } catch (IOException io) {
-            LOGGER.log(Level.SEVERE, "Problema de io no arquivo em getLista:{0}", io);
+            System.out.println("Problema de io no arquivo em getLista:" + io);
         }
         return lista;
     }
@@ -134,9 +130,9 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
                 }
             }
         } catch (EOFException eof) {
-            LOGGER.log(Level.SEVERE, "Problema no fim do arquivo no aplicar filtro no id:{0}", eof);
+            System.out.println("Problema no fim do arquivo no aplicar filtro no id:" + eof);
         } catch (IOException io) {
-            LOGGER.log(Level.SEVERE, "Problema de io no arquivo em aplicar filtro no id:{0}", io);
+            System.out.println("Problema de io no arquivo em aplicar filtro no id:" + io);
         }
         return lista;
     }
@@ -154,9 +150,9 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
                 }
             }
         } catch (EOFException eof) {
-            LOGGER.log(Level.SEVERE, "Problema no fim do arquivo no aplicar filtro no nome:{0}", eof);
+            System.out.println("Problema no fim do arquivo no aplicar filtro no nome:" + eof);
         } catch (IOException io) {
-            LOGGER.log(Level.SEVERE, "Problema de io no arquivo em aplicar filtro no nome:{0}", io);
+            System.out.println("Problema de io no arquivo em aplicar filtro no nome:" + io);
         }
         return lista;
     }
@@ -174,9 +170,9 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
                 }
             }
         } catch (EOFException eof) {
-            LOGGER.log(Level.SEVERE, "Problema no fim do arquivo no aplicar filtro no cpf:{0}", eof);
+            System.out.println("Problema no fim do arquivo no aplicar filtro no cpf:" + eof);
         } catch (IOException io) {
-            LOGGER.log(Level.SEVERE, "Problema de io no arquivo em aplicar filtro no cpf:{0}", io);
+            System.out.println("Problema de io no arquivo em aplicar filtro no cpf:" + io);
         }
         return lista;
     }
@@ -199,9 +195,9 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
                     return 1;
                 }
             } catch (EOFException eof) {
-                LOGGER.log(Level.SEVERE, "Problema no fim do arquivo em alterar:{0}", eof);
+                System.out.println("Problema no fim do arquivo em alterar:" + eof);
             } catch (IOException io) {
-                LOGGER.log(Level.SEVERE, "Problema de io no arquivo em alterar:{0}", io);
+                System.out.println("Problema de io no arquivo em alterar:" + io);
             }
         }
         return 0;
@@ -221,9 +217,9 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
                 cont = cont + 1;
             }
         } catch (EOFException eof) {
-            LOGGER.log(Level.SEVERE, "Problema no fim do arquivo em procurar por c\u00f3digo:{0}", eof);
+           System.out.println("Problema no fim do arquivo em procurar por c\u00f3digo:" + eof);
         } catch (IOException io) {
-            LOGGER.log(Level.SEVERE, "Problema de io no arquivo em procurar por c\u00f3digo:{0}", io);
+           System.out.println("Problema de io no arquivo em procurar por c\u00f3digo:" + io);
         }
         return pos;
     }
@@ -239,16 +235,16 @@ public class RAFClienteDAO extends RAFDAOFactory implements ClienteDAO {
                 pos = procurarCodigo(chave);
                 if (pos != -1) {
                     arquivo.seek(pos * registro.getTamanho());
-                    registro.setCliente_Id(-1);
+                    registro.setCliente_id("-1");
                     registro.setNome("");
                     registro.setCpf("");
                     registro.escrita(arquivo);
                     return 1;
                 }
             } catch (EOFException eof) {
-                LOGGER.log(Level.SEVERE, "Problema no fim do arquivo em excluir:{0}", eof);
+                System.out.println("Problema no fim do arquivo em excluir:" +  eof);
             } catch (IOException io) {
-                LOGGER.log(Level.SEVERE, "Problema de io no arquivo em excluir:{0}", io);
+                System.out.println("Problema de io no arquivo em excluir:" + io);
             }
         }
         return 0;

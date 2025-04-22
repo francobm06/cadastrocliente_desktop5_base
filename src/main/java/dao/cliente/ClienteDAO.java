@@ -17,9 +17,7 @@ public interface ClienteDAO {
 
     public int excluir(Object obj);
 
-    @SuppressWarnings("rawtypes")
     public List<Cliente> aplicarFiltro(Object obj);
 
-    @SuppressWarnings("rawtypes")
     public List<Cliente> getLista();
 }

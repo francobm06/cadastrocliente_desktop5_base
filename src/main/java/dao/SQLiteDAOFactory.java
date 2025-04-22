@@ -9,7 +9,6 @@ import java.util.logging.Logger;
 
 import dao.cliente.ClienteDAO;
 import dao.cliente.SQLiteClienteDAO;
-import java.util.logging.Level;
 
 /**
  * Implementa a fonte de dado para persistência em arquivo utilizando SGBD
@@ -18,8 +17,6 @@ import java.util.logging.Level;
  * @author osmarbraz
  */
 public class SQLiteDAOFactory extends DAOFactory {
-
-    private static final Logger LOGGER = Logger.getLogger(SQLiteDAOFactory.class.getName());
 
     private String driverClass;
     private String jdbcURL;
@@ -56,9 +53,9 @@ public class SQLiteDAOFactory extends DAOFactory {
             Class.forName(getDriverClass());
             con = DriverManager.getConnection(getJdbcURL());
         } catch (ClassNotFoundException e) {            
-            LOGGER.log(Level.SEVERE, "Classe não encontrada!{0}", e);
+            System.out.println("Classe não encontrada!" + e);
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Problema na conexão!{0}", e);
+            System.out.println("Problema na conexão!" + e);
             throw e;
         }
         return con;

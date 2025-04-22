@@ -185,7 +185,6 @@ public class CtrCliente {
     /**
      * Modifica o formulário utilizando por este controle.
      *
-     * @param frmCliente Um formulário do tipo FrmCliente.
      */
     public void setFrmCliente(FrmCliente frmCliente) {
         this.frmCliente = frmCliente;

@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
 import java.util.Collections;
 import java.util.logging.Logger;
 
@@ -19,8 +21,6 @@ import entidade.Cliente;
  * @author osmarbraz
  */
 public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQLiteClienteMetaDados {
-
-    private static final Logger LOGGER = Logger.getLogger(SQLiteClienteDAO.class.getName());
 
     public SQLiteClienteDAO() {
         criar();
@@ -50,7 +50,6 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             }
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
     private List<Cliente> select(String sql) {
         List<Cliente> lista = new LinkedList<>();
         Connection con = null;
@@ -75,7 +74,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             con.close();
             con = null;
         } catch (SQLException e) {
-            LOGGER.severe("Erro no select:" + e);
+            System.out.println("Erro no select:" + e);
         } finally {
             fecharAcessoBD(con, stmt, rs);
         }
@@ -89,25 +88,25 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             Connection con = null;
             Statement stmt = null;
             boolean res = false;
-            StringBuilder sql = new StringBuilder();
+            String sql = "";
             try {
-                sql.append("insert into " + TABLE + "(");
-                sql.append(METADADOSINSERT + " ) ");
+                sql = "insert into " + TABLE + "(";
+                sql = sql + METADADOSINSERT + " ) ";
 
-                sql.append("values ('" + preparaSQL(cliente.getCliente_id()));
-                sql.append("','" + preparaSQL(cliente.getNome()));
-                sql.append("','" + preparaSQL(cliente.getCpf()) + "')");
+                sql = sql + "values ('" + cliente.getCliente_id();
+                sql = sql + "','" + cliente.getNome();
+                sql = sql + "','" + cliente.getCpf() + "')";
 
                 con = getConnection();
                 stmt = con.createStatement();
-                res = stmt.executeUpdate(sql.toString()) > 0;
+                res = stmt.executeUpdate(sql) > 0;
                 stmt.close();
                 stmt = null;
                 con.close();
                 con = null;
 
             } catch (SQLException e) {
-                LOGGER.severe("Erro no inserir:" + e);
+                System.out.println("Erro no inserir:" + e);
                 res = false;
             } finally {
                fecharAcessoBD(con, stmt, null);
@@ -124,23 +123,23 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             Connection con = null;
             Statement stmt = null;
             int res = 0;
-            StringBuilder sql = new StringBuilder();
+            String sql = "";
             try {
-                sql.append("update " + TABLE);
-                sql.append(" set NOME='" + cliente.getNome() + "',");
-                sql.append(" CPF='" + cliente.getCpf() + "'");
-                sql.append(" where " + TABLE + "." + PK[0] + "='" + preparaSQL(cliente.getCliente_id()) + "'");
+                sql = "update " + TABLE;
+                sql = sql + " set NOME='" + cliente.getNome() + "',";
+                sql = sql + " CPF='" + cliente.getCpf() + "'";
+                sql = sql + " where " + TABLE + "." + PK[0] + "='" + cliente.getCliente_id() + "'";
 
                 con = getConnection();
                 stmt = con.createStatement();
-                res = stmt.executeUpdate(sql.toString());
+                res = stmt.executeUpdate(sql);
                 stmt.close();
                 stmt = null;
                 con.close();
                 con = null;
 
             } catch (SQLException e) {
-                LOGGER.severe("Erro no alterar:" + e);
+                System.out.println("Erro no alterar:" + e);
                 res = 0;
             } finally {
                 fecharAcessoBD(con, stmt, null);
@@ -156,20 +155,20 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             Cliente cliente = (Cliente) obj;
             Connection con = null;
             Statement stmt = null;
-            StringBuilder sql = new StringBuilder();
+            String sql = "";
             int res = 0;
             try {
-                sql.append("delete from " + TABLE + " where " + TABLE + "." + PK[0] + " = '" + preparaSQL(cliente.getCliente_id()) + "'");
+                sql = "delete from " + TABLE + " where " + TABLE + "." + PK[0] + " = '" + cliente.getCliente_id() + "'";
                 con = getConnection();
                 stmt = con.createStatement();
-                res = stmt.executeUpdate(sql.toString());
+                res = stmt.executeUpdate(sql);
                 stmt.close();
                 stmt = null;
                 con.close();
                 con = null;
 
             } catch (Exception e) {
-                LOGGER.severe("Erro no excluir:" + e);
+                System.out.println("Erro no excluir:" + e);
                 res = 0;
             } finally {
                 fecharAcessoBD(con, stmt, null);
@@ -181,7 +180,8 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
 
     @Override
     public List<Cliente> getLista() {
-        return select("select " + METADADOSSELECT + " from " + TABLE + " order by " + TABLE + "." + PK[0]);
+        String sql = "select " + METADADOSSELECT + " from " + TABLE + " order by " + TABLE + "." + PK[0];
+        return select(sql);
     }
     
     @Override    
@@ -189,30 +189,30 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
         if (obj != null) {
             Cliente cliente = (Cliente) obj;
 
-            StringBuilder sqlBuilder = new StringBuilder();
-            sqlBuilder.append("select " + METADADOSSELECT + " from " + TABLE);
+            String sql = "";
+            sql  = "select " + METADADOSSELECT + " from " + TABLE;
 
             List<String> filtros = new ArrayList();
 
             if (cliente.getCliente_id() != null && !"".equals(cliente.getCliente_id())) {
-                filtros.add(TABLE + "." + PK[0] + "='" + preparaSQL(cliente.getCliente_id()) + "'");
+                filtros.add(TABLE + "." + PK[0] + "='" + cliente.getCliente_id() + "'");
             }
 
             if (cliente.getNome() != null && !"".equals(cliente.getNome())) {
-                filtros.add(TABLE + ".NOME like upper('%" + preparaSQL(cliente.getNome()) + "%')");
+                filtros.add(TABLE + ".NOME like upper('%" + cliente.getNome() + "%')");
             }
 
             if (cliente.getCpf() != null && !"".equals(cliente.getCpf())) {
-                filtros.add(TABLE + ".CPF = '" + preparaSQL(cliente.getCpf()) + "'");
+                filtros.add(TABLE + ".CPF = '" + cliente.getCpf() + "'");
             }
 
             if (!filtros.isEmpty()) {
-                sqlBuilder.append(" where " + implode(" and ", filtros));
+                sql = sql + " where " + implode(" and ", filtros);
             }
 
-            sqlBuilder.append(" order by " + TABLE + "." + PK[0]);
+            sql = sql + " order by " + TABLE + "." + PK[0];
 
-            return select(sqlBuilder.toString());
+            return select(sql);
         } else {
             return Collections.emptyList();
         }
@@ -224,14 +224,15 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
         try {
             con = getConnection();
             stmt = con.createStatement();
+            String sql = "create table IF NOT EXISTS cliente (clienteId integer, nome varchar(100), cpf varchar(11), CONSTRAINT PK_Cliente PRIMARY KEY (clienteID));";
             //Cria a tabela senão existir
-            stmt.execute("create table IF NOT EXISTS cliente (clienteId integer, nome varchar(100), cpf varchar(11), CONSTRAINT PK_Cliente PRIMARY KEY (clienteID));");
+            stmt.execute(sql);
             stmt.close();
             stmt = null;
             con.close();
             con = null;
         } catch (Exception e) {
-            LOGGER.severe("Erro no criar:" + e);
+            System.out.println("Erro no criar:" + e);
         } finally {
             fecharAcessoBD(con, stmt, null);
         }

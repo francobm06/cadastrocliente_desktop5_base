@@ -16,7 +16,6 @@ import javax.swing.JOptionPane;
  *
  * @author osmarbraz
  */
-@SuppressWarnings("serial")
 public class FrmCliente extends JFrame {
 
     private JPanel contentPane;

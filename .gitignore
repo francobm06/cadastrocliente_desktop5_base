@@ -28,3 +28,4 @@ replay_pid*
 # arquivo banco de dados
 cliente.db
 cliente.dat
+/nbproject/

@@ -10,9 +10,9 @@ import dao.cliente.ClienteDAO;
 public abstract class DAOFactory {
 
     //Tipos de Fonte de Dados suportados pela Factory
-    public static final int SQLITE = 1;
-    public static final int HASHMAP = 2;
-    public static final int RAF = 3;
+    static final int SQLITE = 1;
+    static final int HASHMAP = 2;
+    static final int RAF = 3;
 
     //Retorna o DAO instanciado
     public abstract ClienteDAO getClienteDAO();

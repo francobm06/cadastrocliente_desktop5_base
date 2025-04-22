@@ -18,9 +18,7 @@ import java.util.logging.Logger;
  * @author osmarbraz
  */
 public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
-
-    private static final Logger LOGGER = Logger.getLogger(HashMapClienteDAO.class.getName());
-    
+        
     private static final Map<String, Cliente> mapa = new HashMap<>();
     
     @Override
@@ -28,11 +26,11 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
         if (obj != null) {
             Cliente cliente = (Cliente) obj;
             boolean tem = mapa.containsKey(cliente.getCliente_id());
-            if (!tem) {
+            if (tem == false) {
                 mapa.put(cliente.getCliente_id(), cliente);
                 return true;
             } else {
-                LOGGER.log(Level.SEVERE, "Problema em inserir o registro!");                
+                System.out.println("Problema em inserir o registro!");                
             }
         }
         return false;
@@ -43,13 +41,13 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
         if (obj != null) {
             Cliente cliente = (Cliente) obj;
             boolean tem = mapa.containsKey(cliente.getCliente_id());
-            if (tem) {
+            if (tem == true) {
                 Cliente c = mapa.get(cliente.getCliente_id());
                 c.setNome(cliente.getNome());
                 c.setCpf(cliente.getCpf());
                 return 1;
             } else {
-                LOGGER.log(Level.SEVERE, "Problema em altear o registro!");
+                System.out.println("Problema em altear o registro!");
             }
         }
         return 0;
@@ -60,11 +58,11 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
         if (obj != null) {
             Cliente cliente = (Cliente) obj;
             boolean tem = mapa.containsKey(cliente.getCliente_id());
-            if (tem) {
+            if (tem == true) {
                 mapa.remove(cliente.getCliente_id());
                 return 1;
             } else {
-                LOGGER.log(Level.SEVERE, "Problema em excluir o registro!");
+                System.out.println("Problema em excluir o registro!");
             }
         }
         return 0;
@@ -74,7 +72,7 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
     public List<Cliente> getLista() {
         List<Cliente> lista = new LinkedList<>();
         Iterator<Cliente> it = mapa.values().iterator();
-        while (it.hasNext()) { //Avança enquanto tiver objetos
+        while (it.hasNext() == true) { //Avança enquanto tiver objetos
             Cliente c = it.next();
             lista.add(c);
         }
@@ -88,7 +86,7 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
             List<Cliente> lista = new LinkedList<>();
             Iterator<Cliente> it = mapa.values().iterator();
 
-            while (it.hasNext()) { //Avança enquanto tiver objetos
+            while (it.hasNext() == true) { //Avança enquanto tiver objetos
                 Cliente c = it.next();
 
                 //Filtro para clienteId

@@ -63,10 +63,6 @@ public class Cliente {
         this.cliente_id = cliente_id;
     }
 
-    public void setCliente_Id(int cliente_id) {
-        setCliente_id(cliente_id + "");
-    }
-
     /**
      * Retorna o nome de um cliente.
      *

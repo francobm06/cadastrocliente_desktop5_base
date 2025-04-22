@@ -1,6 +1,5 @@
 package principal;
 
-
 import controle.CtrCliente;
 
 /**

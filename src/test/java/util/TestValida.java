@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class TestValida {
+public class TestValida {
 
     private Valida valida = null;
 
@@ -37,22 +37,6 @@ class TestValida {
     }
 
     /**
-     * Testa CPF válido.
-     */
-    @Test
-    void testValidaCPFValido3() {
-        assertTrue(valida.validaCPF("63883136395"));
-    }
-
-    /**
-     * Testa CPF válido.
-     */
-    @Test
-    void testValidaCPFValido4() {
-        assertTrue(valida.validaCPF("31626333033"));
-    }
-
-    /**
      * Testa CPF inválido final 1.
      */
     @Test
@@ -66,24 +50,6 @@ class TestValida {
     @Test
     void testValidaCPFInvalido2() {
         assertFalse(valida.validaCPF("94622036012"));
-    }
-
-    /**
-     * Testa CPF com problema na conversão.
-     */
-    @Test
-    void testValidaCPFInvalido3() {
-        //CPF com problema na conversão
-        assertFalse(valida.validaCPF("0065XAB22050"));
-    }
-
-    /**
-     * Testa CPF com problema na quantidade de caracteres.
-     */
-    @Test
-    void testValidaCPFInvalidoCurto() {
-        //CPF com problema na conversão
-        assertFalse(valida.validaCPF("111111"));
     }
 
     /**

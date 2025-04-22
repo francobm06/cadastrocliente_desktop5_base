@@ -10,7 +10,7 @@ public final class Factory {
     /** 
      * Evita que a classe seja instânciada.
      */
-    private Factory() {
+    public Factory() {
         
     }
 

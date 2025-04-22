@@ -10,7 +10,7 @@ import java.util.List;
 
 import entidade.Cliente;
 
-class TestCliente {
+public class TestCliente {
 
     /**
      * Testa o construtor sem argumentos do cliente.
@@ -24,7 +24,7 @@ class TestCliente {
     @Test
     void testClienteIdInt() {
         Cliente instancia = new Cliente();
-        instancia.setCliente_Id(1);
+        instancia.setCliente_id("1");
         assertTrue("1".equals(instancia.getCliente_id()) && "".equals(instancia.getNome()) && "".equals(instancia.getCpf()));
     }
 
