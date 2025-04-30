@@ -19,6 +19,6 @@ public class Principal {
     public static void main(String[] args) {
 
         Ctr_Cliente controle = new Ctr_Cliente();
-        controle.executar();
+        controle.ExecutarCtrl_Cliente();
     }
 }

@@ -69,7 +69,7 @@ public class Ctr_Cliente {
     /**
      * Operação que inicia a sequência de interações da manutenção de Cliente.
      */
-    public void executar() {
+    public void ExecutarCtrl_Cliente() {
         getFrmCliente().setVisible(true);
     }
 
