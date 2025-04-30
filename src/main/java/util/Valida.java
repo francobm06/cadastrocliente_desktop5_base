@@ -1,5 +1,12 @@
 package util;
 
+import java.util.*;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Collections;
+
 /**
  * Classe utilitária para conter operações de validação
  *
@@ -12,7 +19,7 @@ public class Valida {
      *
      * @param cpf Um literal com um cpf de cliente.
      */
-    public boolean validaCPF(String cpf) {
+    public boolean ValidaCPF(String cpf) {
         boolean retorno = false;
         if ((cpf.length() == 11) == true) {            
             String digitos = cpf.substring(9, 11);

@@ -9,7 +9,7 @@ import java.util.Collections;
  *
  * @author osmarbraz
  */
-public final class Factory {
+public class Factory {
     
     /** 
      * Evita que a classe seja instânciada.

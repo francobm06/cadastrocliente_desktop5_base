@@ -1,5 +1,6 @@
 package util;
 
+import util.Valida;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.TestInstance;
@@ -25,7 +26,7 @@ public class TestValida {
      */
     @Test
     void testValidaCPFValido1() {
-        assertTrue(valida.validaCPF("11111111111"));
+        assertTrue(valida.ValidaCPF("11111111111"));
     }
 
     /**
@@ -33,7 +34,7 @@ public class TestValida {
      */
     @Test
     void testValidaCPFValido2() {
-        assertTrue(valida.validaCPF("84807125206"));
+        assertTrue(valida.ValidaCPF("84807125206"));
     }
 
     /**
@@ -41,7 +42,7 @@ public class TestValida {
      */
     @Test
     void testValidaCPFInvalido1() {
-        assertFalse(valida.validaCPF("94622036011"));
+        assertFalse(valida.ValidaCPF("94622036011"));
     }
     
     /**
@@ -49,7 +50,7 @@ public class TestValida {
      */
     @Test
     void testValidaCPFInvalido2() {
-        assertFalse(valida.validaCPF("94622036012"));
+        assertFalse(valida.ValidaCPF("94622036012"));
     }
 
     /**
