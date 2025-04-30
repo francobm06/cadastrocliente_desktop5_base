@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 
 import formulario.FrmCliente;
 import entidade.*;
-import Util.Valida;
+import util.Valida;
 
 /**
  * Classe que realiza a interação entre a interface e a entidade do sistema.
