@@ -5,6 +5,7 @@ import java.util.List;
 import dao.cliente.ClienteDAO;
 import dao.DAOFactory;
 import dao.Factory;
+import java.util.ArrayList;
 
 /**
  * Classe que representa a abstração principal do sistema.
@@ -14,7 +15,7 @@ import dao.Factory;
 public class Cliente {
 
     /**
-     * Serve para identificar um cliente.
+     * Serve para identificar um Cliente.
      */
     private String cliente_id;
     /**
@@ -22,9 +23,9 @@ public class Cliente {
      */
     private String nome;
     /**
-     * CPF do cliente
+     * CPF do Cliente
      */
-    private String cpf;
+    private String CPF;
 
     /**
      * Construtor sem argumentos da classe.
@@ -42,11 +43,11 @@ public class Cliente {
     public Cliente(String clienteId, String nome, String cpf) {
         setCliente_id(clienteId);
         setNome(nome);
-        setCpf(cpf);
+        setCPF(cpf);
     }
 
     /**
-     * Retorna o id de um cliente.
+     * Retorna o id de um Cliente.
      *
      * @return Uma string com o Id
      */
@@ -55,16 +56,16 @@ public class Cliente {
     }
 
     /**
-     * Modifica o id de um cliente.
+     * Modifica o id de um Cliente.
      *
-     * @param cliente_id Um literal com o id de um cliente.
+     * @param cliente_id Um literal com o id de um Cliente.
      */
     public void setCliente_id(String cliente_id) {
         this.cliente_id = cliente_id;
     }
 
     /**
-     * Retorna o nome de um cliente.
+     * Retorna o nome de um Cliente.
      *
      * @return Uma string com o nome
      */
@@ -73,30 +74,30 @@ public class Cliente {
     }
 
     /**
-     * Modifica o nome de um cliente.
+     * Modifica o nome de um Cliente.
      *
-     * @param nome Um literal com o nome de um cliente.
+     * @param nome Um literal com o nome de um Cliente.
      */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
     /**
-     * Retorna o cpf de um cliente.
+     * Retorna o CPF de um Cliente.
      *
-     * @return Uma string com o cpf
+     * @return Uma string com o CPF
      */
-    public String getCpf() {
-        return cpf;
+    public String getCPF() {
+        return CPF;
     }
 
     /**
-     * Modifica o CPF de um cliente.
+     * Modifica o CPF de um Cliente.
      *
-     * @param cpf Um literal com o cpf de um cliente
+     * @param CPF Um literal com o CPF de um Cliente
      */
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
     }
 
     /**
@@ -104,7 +105,7 @@ public class Cliente {
      */
     @Override
     public String toString() {
-        return ("clienteId:" + getCliente_id() + " - Nome :" + getNome() + " - CPF :" + getCpf());
+        return ("clienteId:" + getCliente_id() + " - Nome :" + getNome() + " - CPF :" + getCPF());
     }
 
     /**
@@ -141,7 +142,7 @@ public class Cliente {
      * Retorna uma lista de objetos que atende os valores passados pelo objeto.O Id realiza comparação e o nome realiza uma comparação parcial.
      * @return Uma lista com os objetos selecionados.
      */
-    public List aplicarFiltro() {
+    public ArrayList aplicarFiltro() {
         DAOFactory factory = DAOFactory.getDAOFactory(Factory.FABRICA);
         ClienteDAO clientedao = factory.getClienteDAO();
         return clientedao.aplicarFiltro(this);
@@ -168,7 +169,7 @@ public class Cliente {
         if (lista.isEmpty() == false) {
             Cliente oCliente = (Cliente) lista.iterator().next();
             setNome(oCliente.getNome());
-            setCpf(oCliente.getCpf());
+            setCPF(oCliente.getCPF());
             return true;
         } else {
             return false;

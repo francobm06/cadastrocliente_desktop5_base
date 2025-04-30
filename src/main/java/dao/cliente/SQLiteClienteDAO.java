@@ -17,10 +17,10 @@ import java.util.Collections;
 import java.util.logging.Logger;
 
 import dao.SQLiteDAOFactory;
-import entidade.cliente;
+import entidade.Cliente;
 
 /**
- * Implementa a persistência de cliente utilizando SQLite.
+ * Implementa a persistência de Cliente utilizando SQLite.
  *
  * @author osmarbraz
  */
@@ -54,8 +54,8 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             }
     }
 
-    private ArrayList<cliente> select(String sql) {
-        ArrayList<cliente> lista = new ArrayList<>();
+    private ArrayList<Cliente> select(String sql) {
+        ArrayList<Cliente> lista = new ArrayList<>();
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -65,7 +65,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next() == true) {
-                cliente cliente = new cliente();
+                Cliente cliente = new Cliente();
                 cliente.setCliente_id(rs.getString("CLIENTEID"));
                 cliente.setNome(rs.getString("NOME"));
                 cliente.setCPF(rs.getString("CPF"));
@@ -87,7 +87,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
 
     public boolean inserir(Object obj) {
        if (obj != null) {
-            cliente cliente = (cliente) obj;
+            Cliente cliente = (Cliente) obj;
             Connection con = null;
             Statement stmt = null;
             boolean res = false;
@@ -121,7 +121,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
     
     public int alterar(Object obj) {
         if (obj != null) {
-            cliente cliente = (cliente) obj;
+            Cliente cliente = (Cliente) obj;
             Connection con = null;
             Statement stmt = null;
             int res = 0;
@@ -153,7 +153,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
 
     public int excluir(Object obj) {
         if (obj != null) {
-            cliente cliente = (cliente) obj;
+            Cliente cliente = (Cliente) obj;
             Connection con = null;
             Statement stmt = null;
             String sql = "";
@@ -179,14 +179,14 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
         return 0;
     }
 
-    public ArrayList<cliente> getLista() {
+    public ArrayList<Cliente> getLista() {
         String sql = "select " + METADADOSSELECT + " from " + TABLE + " order by " + TABLE + "." + PK[0];
         return select(sql);
     }
     
-    public ArrayList<cliente> aplicarFiltro(Object obj) {
+    public ArrayList<Cliente> aplicarFiltro(Object obj) {
         if (obj != null) {
-            cliente cliente = (cliente) obj;
+            Cliente cliente = (Cliente) obj;
 
             String sql = "";
             sql  = "select " + METADADOSSELECT + " from " + TABLE;

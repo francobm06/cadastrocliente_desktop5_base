@@ -8,29 +8,29 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import entidade.cliente;
+import entidade.Cliente;
 
 public class TestCliente {
 
     /**
-     * Testa o construtor sem argumentos do cliente.
+     * Testa o construtor sem argumentos do Cliente.
      */
     @Test
     void testCliente() {
-        cliente instancia = new cliente();
+        Cliente instancia = new Cliente();
         assertTrue("".equals(instancia.getCliente_id()) && "".equals(instancia.getNome()) && "".equals(instancia.getCPF()));
     }
 
     @Test
     void testClienteIdInt() {
-        cliente instancia = new cliente();
+        Cliente instancia = new Cliente();
         instancia.setCliente_id("1");
         assertTrue("1".equals(instancia.getCliente_id()) && "".equals(instancia.getNome()) && "".equals(instancia.getCPF()));
     }
 
     @Test
     void testParaString() {
-        cliente instancia = new cliente();
+        Cliente instancia = new Cliente();
         String esperado = "clienteId: - Nome : - CPF :";
         assertEquals(esperado, instancia.toString());
     }    

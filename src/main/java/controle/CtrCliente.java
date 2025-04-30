@@ -67,19 +67,19 @@ public class CtrCliente {
     }
 
     /**
-     * Operação que inicia a sequência de interações da manutenção de cliente.
+     * Operação que inicia a sequência de interações da manutenção de Cliente.
      */
     public void executar() {
         getFrmCliente().setVisible(true);
     }
 
     /**
-     * Inclui um cliente.
+     * Inclui um Cliente.
      *
      * @param e Objeto do evento.
      */
     public void jBIncluir_actionPerformed(ActionEvent e) {
-        cliente cliente = new cliente();
+        Cliente cliente = new Cliente();
         cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         cliente.setNome(getFrmCliente().jTNome.getText());
         cliente.setCPF(getFrmCliente().jTCpf.getText());
@@ -98,12 +98,12 @@ public class CtrCliente {
     }
 
     /**
-     * Altera um cliente.
+     * Altera um Cliente.
      *
      * @param e Objeto do evento.
      */
     public void jBAlterar_actionPerformed(ActionEvent e) {
-        cliente cliente = new cliente();
+        Cliente cliente = new Cliente();
         cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         cliente.setNome(getFrmCliente().jTNome.getText());
         cliente.setCPF(getFrmCliente().jTCpf.getText());
@@ -122,12 +122,12 @@ public class CtrCliente {
     }
 
     /**
-     * Consulta um cliente.
+     * Consulta um Cliente.
      *
      * @param e Objeto do evento.
      */
     public void jBConsultar_actionPerformed(ActionEvent e) {
-        cliente cliente = new cliente();
+        Cliente cliente = new Cliente();
         cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         boolean resultado = cliente.abrir();
         if (resultado == true) {
@@ -140,12 +140,12 @@ public class CtrCliente {
     }
 
     /**
-     * Excluí o cliente.
+     * Excluí o Cliente.
      *
      * @param e Objeto do evento.
      */
     public void jBExcluir_actionPerformed(ActionEvent e) {
-        cliente cliente = new cliente();
+        Cliente cliente = new Cliente();
         cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         int resultado = cliente.excluir();
         if (resultado != 0) {

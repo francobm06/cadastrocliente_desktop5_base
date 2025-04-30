@@ -8,24 +8,24 @@ import java.util.Map;
 import java.util.Collections;
 
 import dao.HashMapDAOFactory;
-import entidade.cliente;
+import entidade.Cliente;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Implementa a persitência para cliente utilizando HashMap.
+ * Implementa a persitência para Cliente utilizando HashMap.
  *
  * @author osmarbraz
  */
 public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
         
-    private static final Map<String, cliente> mapa = new HashMap<>();
+    private static final Map<String, Cliente> mapa = new HashMap<>();
     
     @Override
     public boolean inserir(Object obj) {
         if (obj != null) {
-            cliente cliente = (cliente) obj;
+            Cliente cliente = (Cliente) obj;
             boolean tem = mapa.containsKey(cliente.getCliente_id());
             if (tem == false) {
                 mapa.put(cliente.getCliente_id(), cliente);
@@ -39,10 +39,10 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
 
     public int alterar(Object obj) {
         if (obj != null) {
-            cliente cliente = (cliente) obj;
+            Cliente cliente = (Cliente) obj;
             boolean tem = mapa.containsKey(cliente.getCliente_id());
             if (tem == true) {
-                cliente c = mapa.get(cliente.getCliente_id());
+                Cliente c = mapa.get(cliente.getCliente_id());
                 c.setNome(cliente.getNome());
                 c.setCPF(cliente.getCPF());
                 return 1;
@@ -55,7 +55,7 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
 
     public int excluir(Object obj) {
         if (obj != null) {
-            cliente cliente = (cliente) obj;
+            Cliente cliente = (Cliente) obj;
             boolean tem = mapa.containsKey(cliente.getCliente_id());
             if (tem == true) {
                 mapa.remove(cliente.getCliente_id());
@@ -67,25 +67,25 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
         return 0;
     }
 
-    public ArrayList<cliente> getLista() {
-        ArrayList<cliente> lista = new ArrayList<>();
-        Iterator<cliente> it = mapa.values().iterator();
+    public ArrayList<Cliente> getLista() {
+        ArrayList<Cliente> lista = new ArrayList<>();
+        Iterator<Cliente> it = mapa.values().iterator();
         while (it.hasNext() == true) { //Avança enquanto tiver objetos
-            cliente c = it.next();
+            Cliente c = it.next();
             lista.add(c);
         }
         return lista;
     }
     
     @Override
-    public ArrayList<cliente> aplicarFiltro(Object obj) {
+    public ArrayList<Cliente> aplicarFiltro(Object obj) {
         if (obj != null) {
-            cliente cliente = (cliente) obj;
-            ArrayList<cliente> lista = new ArrayList<>();
-            Iterator<cliente> it = mapa.values().iterator();
+            Cliente cliente = (Cliente) obj;
+            ArrayList<Cliente> lista = new ArrayList<>();
+            Iterator<Cliente> it = mapa.values().iterator();
 
             while (it.hasNext() == true) { //Avança enquanto tiver objetos
-                cliente c = it.next();
+                Cliente c = it.next();
 
                 //Filtro para clienteId
                 if (c.getCliente_id().equalsIgnoreCase(cliente.getCliente_id()))  {
