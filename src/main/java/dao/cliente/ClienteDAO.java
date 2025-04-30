@@ -1,8 +1,9 @@
 package dao.cliente;
 
-import java.util.List;
+import java.util.*;
 
-import entidade.Cliente;
+import entidade.cliente;
+import java.util.ArrayList;
 
 /**
  * Interface que define as operações para a persistência de cliente.
@@ -17,7 +18,7 @@ public interface ClienteDAO {
 
     public int excluir(Object obj);
 
-    public List<Cliente> aplicarFiltro(Object obj);
+    public ArrayList<cliente> aplicarFiltro(Object obj);
 
-    public List<Cliente> getLista();
+    public ArrayList<cliente> getLista();
 }

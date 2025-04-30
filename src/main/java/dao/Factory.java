@@ -1,5 +1,9 @@
 package dao;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Collections;
+
 /**
  * Define a fábrica que está sendo utilizada pelo sistema.
  *
@@ -14,6 +18,6 @@ public final class Factory {
         
     }
 
-    public static final int FABRICA = 1;
+    public static int FABRICA = 1;
 
 }

@@ -3,8 +3,8 @@ package controle;
 import java.awt.event.ActionEvent;
 
 import formulario.FrmCliente;
-import entidade.Cliente;
-import util.Valida;
+import entidade.*;
+import Util.Valida;
 
 /**
  * Classe que realiza a interação entre a interface e a entidade do sistema.
@@ -79,12 +79,12 @@ public class CtrCliente {
      * @param e Objeto do evento.
      */
     public void jBIncluir_actionPerformed(ActionEvent e) {
-        Cliente cliente = new Cliente();
+        cliente cliente = new cliente();
         cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         cliente.setNome(getFrmCliente().jTNome.getText());
-        cliente.setCpf(getFrmCliente().jTCpf.getText());
+        cliente.setCPF(getFrmCliente().jTCpf.getText());
         Valida valida = new Valida();
-        boolean cpfValido = valida.validaCPF(cliente.getCpf());
+        boolean cpfValido = valida.ValidaCPF(cliente.getCPF());
         if (cpfValido == true) {
             boolean resultado = cliente.inserir();
             if (resultado == true) {
@@ -103,12 +103,12 @@ public class CtrCliente {
      * @param e Objeto do evento.
      */
     public void jBAlterar_actionPerformed(ActionEvent e) {
-        Cliente cliente = new Cliente();
+        cliente cliente = new cliente();
         cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         cliente.setNome(getFrmCliente().jTNome.getText());
-        cliente.setCpf(getFrmCliente().jTCpf.getText());
+        cliente.setCPF(getFrmCliente().jTCpf.getText());
         Valida valida = new Valida();
-        boolean cpfValido = valida.validaCPF(cliente.getCpf());
+        boolean cpfValido = valida.ValidaCPF(cliente.getCPF());
         if (cpfValido == true) {
             int resultado = cliente.alterar();
             if (resultado != 0) {
@@ -127,12 +127,12 @@ public class CtrCliente {
      * @param e Objeto do evento.
      */
     public void jBConsultar_actionPerformed(ActionEvent e) {
-        Cliente cliente = new Cliente();
+        cliente cliente = new cliente();
         cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         boolean resultado = cliente.abrir();
         if (resultado == true) {
             getFrmCliente().jTNome.setText(cliente.getNome());
-            getFrmCliente().jTCpf.setText(cliente.getCpf());
+            getFrmCliente().jTCpf.setText(cliente.getCPF());
             getFrmCliente().mostrarMensagem("Cliente encontrado!");
         } else {
             getFrmCliente().mostrarMensagem("Cliente não encontrado!");
@@ -145,7 +145,7 @@ public class CtrCliente {
      * @param e Objeto do evento.
      */
     public void jBExcluir_actionPerformed(ActionEvent e) {
-        Cliente cliente = new Cliente();
+        cliente cliente = new cliente();
         cliente.setCliente_id(getFrmCliente().jTClienteId.getText());
         int resultado = cliente.excluir();
         if (resultado != 0) {

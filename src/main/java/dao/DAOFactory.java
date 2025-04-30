@@ -12,8 +12,7 @@ public abstract class DAOFactory {
     //Tipos de Fonte de Dados suportados pela Factory
     static final int SQLITE = 1;
     static final int HASHMAP = 2;
-    static final int RAF = 3;
-
+    
     //Retorna o DAO instanciado
     public abstract ClienteDAO getClienteDAO();
 
@@ -28,9 +27,7 @@ public abstract class DAOFactory {
             case SQLITE:
                 return new SQLiteDAOFactory();
             case HASHMAP:
-                return new HashMapDAOFactory();
-            case RAF:
-                return new RAFDAOFactory();
+                return new HashMapDAOFactory();           
             default:
                 return null;
         }

@@ -10,12 +10,12 @@ public interface SQLiteClienteMetaDados {
     /**
      * string com o nome da tabela usada no banco
      */
-    public static final String TABLE = "CLIENTE";
+    public static String TABLE = "CLIENTE";
 
     /**
      * vetor de string com as chaves da tabela
      */
-    public static final String[] PK = {"CLIENTEID"};
+    public static String[] PK = {"CLIENTEID"};
 
     /**
      * string com os campos para serem utilizados com insert

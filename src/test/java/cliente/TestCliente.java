@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import entidade.Cliente;
+import entidade.cliente;
 
 public class TestCliente {
 
@@ -17,20 +17,20 @@ public class TestCliente {
      */
     @Test
     void testCliente() {
-        Cliente instancia = new Cliente();
-        assertTrue("".equals(instancia.getCliente_id()) && "".equals(instancia.getNome()) && "".equals(instancia.getCpf()));
+        cliente instancia = new cliente();
+        assertTrue("".equals(instancia.getCliente_id()) && "".equals(instancia.getNome()) && "".equals(instancia.getCPF()));
     }
 
     @Test
     void testClienteIdInt() {
-        Cliente instancia = new Cliente();
+        cliente instancia = new cliente();
         instancia.setCliente_id("1");
-        assertTrue("1".equals(instancia.getCliente_id()) && "".equals(instancia.getNome()) && "".equals(instancia.getCpf()));
+        assertTrue("1".equals(instancia.getCliente_id()) && "".equals(instancia.getNome()) && "".equals(instancia.getCPF()));
     }
 
     @Test
     void testParaString() {
-        Cliente instancia = new Cliente();
+        cliente instancia = new cliente();
         String esperado = "clienteId: - Nome : - CPF :";
         assertEquals(esperado, instancia.toString());
     }    

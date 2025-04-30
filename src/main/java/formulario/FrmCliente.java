@@ -1,7 +1,6 @@
 package formulario;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
 import javax.swing.JButton;
@@ -10,6 +9,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Collections;
 
 /**
  * Classe que implementa a interface principal do sistema.
@@ -38,13 +43,13 @@ public class FrmCliente extends JFrame {
      * Construtor sem argumentos.
      */
     public FrmCliente() {
-        inicializar();
+        Inicializar();
     }
 
     /**
      * Inicializa os componentes da janela.
      */
-    private void inicializar() {
+    private void Inicializar() {
         contentPane = (JPanel) this.getContentPane();
 
         jLClienteId = new JLabel();

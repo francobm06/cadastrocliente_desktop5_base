@@ -8,12 +8,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Collections;
 
 import java.util.Collections;
 import java.util.logging.Logger;
 
 import dao.SQLiteDAOFactory;
-import entidade.Cliente;
+import entidade.cliente;
 
 /**
  * Implementa a persistência de cliente utilizando SQLite.
@@ -50,8 +54,8 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             }
     }
 
-    private List<Cliente> select(String sql) {
-        List<Cliente> lista = new LinkedList<>();
+    private ArrayList<cliente> select(String sql) {
+        ArrayList<cliente> lista = new ArrayList<>();
         Connection con = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -61,10 +65,10 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             stmt = con.createStatement();
             rs = stmt.executeQuery(sql);
             while (rs.next() == true) {
-                Cliente cliente = new Cliente();
+                cliente cliente = new cliente();
                 cliente.setCliente_id(rs.getString("CLIENTEID"));
                 cliente.setNome(rs.getString("NOME"));
-                cliente.setCpf(rs.getString("CPF"));
+                cliente.setCPF(rs.getString("CPF"));
                 lista.add(cliente);
             }
             rs.close();
@@ -81,10 +85,9 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
         return lista;
     }
 
-    @Override
     public boolean inserir(Object obj) {
        if (obj != null) {
-            Cliente cliente = (Cliente) obj;
+            cliente cliente = (cliente) obj;
             Connection con = null;
             Statement stmt = null;
             boolean res = false;
@@ -95,7 +98,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
 
                 sql = sql + "values ('" + cliente.getCliente_id();
                 sql = sql + "','" + cliente.getNome();
-                sql = sql + "','" + cliente.getCpf() + "')";
+                sql = sql + "','" + cliente.getCPF() + "')";
 
                 con = getConnection();
                 stmt = con.createStatement();
@@ -116,10 +119,9 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
         return false;
     }
     
-    @Override
     public int alterar(Object obj) {
         if (obj != null) {
-            Cliente cliente = (Cliente) obj;
+            cliente cliente = (cliente) obj;
             Connection con = null;
             Statement stmt = null;
             int res = 0;
@@ -127,7 +129,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             try {
                 sql = "update " + TABLE;
                 sql = sql + " set NOME='" + cliente.getNome() + "',";
-                sql = sql + " CPF='" + cliente.getCpf() + "'";
+                sql = sql + " CPF='" + cliente.getCPF() + "'";
                 sql = sql + " where " + TABLE + "." + PK[0] + "='" + cliente.getCliente_id() + "'";
 
                 con = getConnection();
@@ -149,10 +151,9 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
         return 0;
     }
 
-    @Override
     public int excluir(Object obj) {
         if (obj != null) {
-            Cliente cliente = (Cliente) obj;
+            cliente cliente = (cliente) obj;
             Connection con = null;
             Statement stmt = null;
             String sql = "";
@@ -178,16 +179,14 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
         return 0;
     }
 
-    @Override
-    public List<Cliente> getLista() {
+    public ArrayList<cliente> getLista() {
         String sql = "select " + METADADOSSELECT + " from " + TABLE + " order by " + TABLE + "." + PK[0];
         return select(sql);
     }
     
-    @Override    
-    public List<Cliente> aplicarFiltro(Object obj) {
+    public ArrayList<cliente> aplicarFiltro(Object obj) {
         if (obj != null) {
-            Cliente cliente = (Cliente) obj;
+            cliente cliente = (cliente) obj;
 
             String sql = "";
             sql  = "select " + METADADOSSELECT + " from " + TABLE;
@@ -202,8 +201,8 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
                 filtros.add(TABLE + ".NOME like upper('%" + cliente.getNome() + "%')");
             }
 
-            if (cliente.getCpf() != null && !"".equals(cliente.getCpf())) {
-                filtros.add(TABLE + ".CPF = '" + cliente.getCpf() + "'");
+            if (cliente.getCPF() != null && !"".equals(cliente.getCPF())) {
+                filtros.add(TABLE + ".CPF = '" + cliente.getCPF() + "'");
             }
 
             if (!filtros.isEmpty()) {
@@ -214,7 +213,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
 
             return select(sql);
         } else {
-            return Collections.emptyList();
+            return new ArrayList();
         }
     }
 

@@ -15,6 +15,6 @@ public final class SQLiteDadosBanco {
     }
 
     //Altere aqui os dados do seu banco de dados	
-    public static final String DATABASE = "cliente.db";
-    public static final String DRIVER = "org.sqlite.JDBC";
+    public static String DATABASE = "cliente.db";
+    public static String DRIVER = "org.sqlite.JDBC";
 }
