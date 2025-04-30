@@ -1,8 +1,6 @@
 
 
-
-
-import controle.CtrCliente;
+import controle.Ctr_Cliente;
 
 /**
  * Classe que possui a operação main da aplicação.
@@ -20,7 +18,7 @@ public class Principal {
      */
     public static void main(String[] args) {
 
-        CtrCliente controle = new CtrCliente();
+        Ctr_Cliente controle = new Ctr_Cliente();
         controle.executar();
     }
 }

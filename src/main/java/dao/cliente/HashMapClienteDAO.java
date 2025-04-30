@@ -31,7 +31,7 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
                 mapa.put(cliente.getCliente_id(), cliente);
                 return true;
             } else {
-                System.out.println("Problema em inserir o registro!");                
+                System.out.println("Problema:" + " em inserir o registro!");                
             }
         }
         return false;
@@ -47,7 +47,7 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
                 c.setCPF(cliente.getCPF());
                 return 1;
             } else {
-                System.out.println("Problema em altear o registro!");
+                System.out.println("Problema:" + " em altear o registro!");
             }
         }
         return 0;
@@ -61,7 +61,7 @@ public class HashMapClienteDAO extends HashMapDAOFactory implements ClienteDAO {
                 mapa.remove(cliente.getCliente_id());
                 return 1;
             } else {
-                System.out.println("Problema em excluir o registro!");
+                System.out.println("Problema:" + " em excluir o registro!");
             }
         }
         return 0;

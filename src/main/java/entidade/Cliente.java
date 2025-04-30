@@ -142,7 +142,7 @@ public class Cliente {
      * Retorna uma lista de objetos que atende os valores passados pelo objeto.O Id realiza comparação e o nome realiza uma comparação parcial.
      * @return Uma lista com os objetos selecionados.
      */
-    public ArrayList aplicarFiltro() {
+    public ArrayList Aplicar_Filtro() {
         DAOFactory factory = DAOFactory.getDAOFactory(Factory.FABRICA);
         ClienteDAO clientedao = factory.getClienteDAO();
         return clientedao.aplicarFiltro(this);

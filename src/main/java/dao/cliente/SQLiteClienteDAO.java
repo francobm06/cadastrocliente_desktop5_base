@@ -78,7 +78,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             con.close();
             con = null;
         } catch (SQLException e) {
-            System.out.println("Erro no select:" + e);
+            System.out.println("Erro:" + " no select:" + e);
         } finally {
             fecharAcessoBD(con, stmt, rs);
         }
@@ -109,7 +109,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
                 con = null;
 
             } catch (SQLException e) {
-                System.out.println("Erro no inserir:" + e);
+                System.out.println("Erro:" + " no inserir:" + e);
                 res = false;
             } finally {
                fecharAcessoBD(con, stmt, null);
@@ -141,7 +141,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
                 con = null;
 
             } catch (SQLException e) {
-                System.out.println("Erro no alterar:" + e);
+                System.out.println("Erro:" + " no alterar:" + e);
                 res = 0;
             } finally {
                 fecharAcessoBD(con, stmt, null);
@@ -169,7 +169,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
                 con = null;
 
             } catch (Exception e) {
-                System.out.println("Erro no excluir:" + e);
+                System.out.println("Erro:" + " no excluir:" + e);
                 res = 0;
             } finally {
                 fecharAcessoBD(con, stmt, null);
@@ -231,7 +231,7 @@ public class SQLiteClienteDAO extends SQLiteDAOFactory implements ClienteDAO, SQ
             con.close();
             con = null;
         } catch (Exception e) {
-            System.out.println("Erro no criar:" + e);
+            System.out.println("Erro:" + " no criar:" + e);
         } finally {
             fecharAcessoBD(con, stmt, null);
         }

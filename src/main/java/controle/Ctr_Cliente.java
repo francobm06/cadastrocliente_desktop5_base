@@ -11,14 +11,14 @@ import util.Valida;
  *
  * @author osmarbraz
  */
-public class CtrCliente {
+public class Ctr_Cliente {
 
     private FrmCliente frmCliente;
 
     /**
      * Construtor sem argumentos.
      */
-    public CtrCliente() {
+    public Ctr_Cliente() {
 
         // Instancia a janela
         setFrmCliente(new FrmCliente());
