@@ -13,7 +13,8 @@ jobs:
     # Runner com uma instância do ubuntu
     runs-on: ubuntu-latest
     environment: 
-      name: dev    
+      name: dev
+    name: build-dev - Compilação e teste
     steps:
     # Utiliza a action checkout para fazer o git clone no runner
     - name: Realiza o checkout do repositório
