@@ -16,9 +16,6 @@ jobs:
       name: dev
     name: build-dev - Compilação e teste
     steps:
-    # Configura o termina para interface gráfica
-    - name: Configura xvfb para tela 0
-      run: Xvfb :1 -screen 0 1600x1200x24 &    
     # Utiliza a action checkout para fazer o git clone no runner
     - name: Realiza o checkout do repositório
       uses: actions/checkout@v3
@@ -32,13 +29,6 @@ jobs:
     # Executa a compilação e testes do projeto com o Maven no runner    
     - name: Compila o projeto com Maven
       run: mvn -B test --file pom.xml
-      # Configura as variáveis de ambiente
-      env:
-        # Roda a aplicação a tela 1 do Xvfb
-        DISPLAY: :1
-    # Desliga o Xvfb
-    - name: Desliga Xvfb
-      run: killall Xvfb    
   
   # Jobs do ambiente de homologação
   build-hmg:
@@ -49,9 +39,6 @@ jobs:
     needs: build-dev
     name: build-hmg - Análise do código
     steps:
-    # Configura o termina para interface gráfica
-    - name: Configura xvfb para tela 0
-      run: Xvfb :1 -screen 0 1600x1200x24 &    
     # Utiliza a action checkout para fazer o git clone no runner
     - name: Realiza o checkout do repositório
       uses: actions/checkout@v3 
@@ -87,16 +74,7 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       #run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=osmarbraz_cadastrocliente_desktop5_base #Default do Sonarcloud
       run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=osmarbraz_cadastrocliente_desktop5_base org.jacoco:jacoco-maven-plugin:prepare-agent -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
-      # Configura as variáveis de ambiente
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        # Roda a aplicação a tela 1 do Xvfb
-        DISPLAY: :1
-    # Desliga o Xvfb
-    - name: Desliga Xvfb
-      run: killall Xvfb
-      
+            
   # Jobs do ambiente de produção
   build-prd:
     # Runner com uma instância do ubuntu      
@@ -106,9 +84,6 @@ jobs:
     needs: build-hmg
     name: build-prd - Empacotamento
     steps:
-    # Configura o termina para interface gráfica
-    - name: Configura xvfb para tela 0
-      run: Xvfb :1 -screen 0 1600x1200x24 &        
     # Utiliza a action checkout para fazer o git clone no runner        
     - name: Realiza o checkout do repositório
       uses: actions/checkout@v3
@@ -123,10 +98,6 @@ jobs:
     # O parâmetro -DskipTests pula os testes pois já foram executados no ambiente anterior.
     - name: Empacota o projeto com Maven      
       run: mvn -B package --file pom.xml -DskipTests
-      # Configura as variáveis de ambiente
-      env:
-        # Roda a aplicação a tela 1 do Xvfb   
-        DISPLAY: :1
     # Cria o artefato de download    
     - name: Crie uma pasta temporária(stating) de downloads de artefatos
       run: mkdir staging
@@ -139,6 +110,3 @@ jobs:
         name: Package-${{ runner.os }} #.zip será adicionado automaticamente
         # Caminho da pasta temporária (stating)
         path: staging    
-    # Desliga o Xvfb
-    - name: Desliga Xvfb
-      run: killall Xvfb    
