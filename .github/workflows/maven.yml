@@ -16,6 +16,9 @@ jobs:
       name: dev
     name: build-dev - Compilação e teste
     steps:
+    # Configura o terminal virtual para interface gráfica
+    - name: Configura xvfb para tela 0
+      run: Xvfb :1 -screen 0 1600x1200x24 &    
     # Utiliza a action checkout para fazer o git clone no runner
     - name: Realiza o checkout do repositório
       uses: actions/checkout@v3
@@ -29,6 +32,13 @@ jobs:
     # Executa a compilação e testes do projeto com o Maven no runner    
     - name: Compila o projeto com Maven
       run: mvn -B test --file pom.xml
+      # Configura as variáveis de ambiente
+      env:
+        # Roda a aplicação a tela 1 do Xvfb
+        DISPLAY: :1
+     # Desliga o Xvfb
+    - name: Desliga Xvfb
+      run: killall Xvfb    
   
   # Jobs do ambiente de homologação
   build-hmg:
