@@ -26,18 +26,20 @@ public class FrmCliente extends JFrame {
     private JPanel contentPane;
 
     private JLabel jLClienteId;
-    public JTextField jTClienteId;
+    private JTextField jTClienteId;
     private JLabel jLNome;
-    public JTextField jTNome;
+    private JTextField jTNome;
     private JLabel jLCpf;
-    public JTextField jTCpf;
+    private JTextField jTCpf;
 
-    public JButton jBIncluir;
-    public JButton jBAlterar;
-    public JButton jBExcluir;
-    public JButton jBConsultar;
-    public JButton jBLimpar;
-    public JButton jBFechar;
+    private JButton jBIncluir;
+    private JButton jBAlterar;
+    private JButton jBExcluir;
+    private JButton jBConsultar;
+    private JButton jBLimpar;
+    private JButton jBFechar;
+    
+    private String mensagem;
 
     /**
      * Construtor sem argumentos.
@@ -46,10 +48,114 @@ public class FrmCliente extends JFrame {
         Inicializar();
     }
 
+    public JLabel getjLClienteId() {
+        return jLClienteId;
+    }
+
+    public void setjLClienteId(JLabel jLClienteId) {
+        this.jLClienteId = jLClienteId;
+    }
+
+    public JTextField getjTClienteId() {
+        return jTClienteId;
+    }
+
+    public void setjTClienteId(JTextField jTClienteId) {
+        this.jTClienteId = jTClienteId;
+    }
+
+    public JLabel getjLNome() {
+        return jLNome;
+    }
+
+    public void setjLNome(JLabel jLNome) {
+        this.jLNome = jLNome;
+    }
+
+    public JTextField getjTNome() {
+        return jTNome;
+    }
+
+    public void setjTNome(JTextField jTNome) {
+        this.jTNome = jTNome;
+    }
+
+    public JLabel getjLCpf() {
+        return jLCpf;
+    }
+
+    public void setjLCpf(JLabel jLCpf) {
+        this.jLCpf = jLCpf;
+    }
+
+    public JTextField getjTCpf() {
+        return jTCpf;
+    }
+
+    public void setjTCpf(JTextField jTCpf) {
+        this.jTCpf = jTCpf;
+    }
+
+    public JButton getjBIncluir() {
+        return jBIncluir;
+    }
+
+    public void setjBIncluir(JButton jBIncluir) {
+        this.jBIncluir = jBIncluir;
+    }
+
+    public JButton getjBAlterar() {
+        return jBAlterar;
+    }
+
+    public void setjBAlterar(JButton jBAlterar) {
+        this.jBAlterar = jBAlterar;
+    }
+
+    public JButton getjBExcluir() {
+        return jBExcluir;
+    }
+
+    public void setjBExcluir(JButton jBExcluir) {
+        this.jBExcluir = jBExcluir;
+    }
+
+    public JButton getjBConsultar() {
+        return jBConsultar;
+    }
+
+    public void setjBConsultar(JButton jBConsultar) {
+        this.jBConsultar = jBConsultar;
+    }
+
+    public JButton getjBLimpar() {
+        return jBLimpar;
+    }
+
+    public void setjBLimpar(JButton jBLimpar) {
+        this.jBLimpar = jBLimpar;
+    }
+
+    public JButton getjBFechar() {
+        return jBFechar;
+    }
+
+    public void setjBFechar(JButton jBFechar) {
+        this.jBFechar = jBFechar;
+    }
+
+    public String getMensagem() {
+        return mensagem;
+    }
+
+    public void setMensagem(String mensagem) {
+        this.mensagem = mensagem;
+    }
+    
     /**
      * Inicializa os componentes da janela.
      */
-    private void Inicializar() {
+    protected void Inicializar() {
         contentPane = (JPanel) this.getContentPane();
 
         jLClienteId = new JLabel();
