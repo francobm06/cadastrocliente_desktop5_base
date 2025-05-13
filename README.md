@@ -1,4 +1,4 @@
-a
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=francobm06_cadastrocliente_desktop5_base&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=francobm06_cadastrocliente_desktop5_base)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=francobm06_cadastrocliente_desktop5_base&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=francobm06_cadastrocliente_desktop5_base)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=francobm06_cadastrocliente_desktop5_base&metric=coverage)](https://sonarcloud.io/summary/new_code?id=francobm06_cadastrocliente_desktop5_base)
 
